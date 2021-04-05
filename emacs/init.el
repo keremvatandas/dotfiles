@@ -19,6 +19,9 @@
 (setq gc-cons-threshold (* 100 1024 1024)
       gc-cons-percentage 0.6)
 
+;; Make Your Emacs Frame Fit Flush On macOS
+(setq frame-resize-pixelwise t)
+
 
 ;; Use package management!
 (require 'package)
@@ -49,33 +52,13 @@
     (package-refresh-contents)
     (package-install 'use-package))
 
-;; This must be first, and it makes everything else a little bit easier.
-;;; -*- lexical-binding: t -*-
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; SECURITY
-;; https://glyph.twistedmatrix.com/2015/11/editor-malware.html
+;; Update Load Path
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; (setq
-;;  cm/machine-trust-file
-;;  (cond
-;;   ((string-prefix-p "nevada" system-name) (concat (getenv "HOME") "/.guix-profile/etc/ssl/ca-certificates.crt"))
-;;   ((string-prefix-p "nordic" system-name) "/etc/ssl/certs/ca-certificates.crt")
-;;   ((string-prefix-p "novaria" system-name) "/etc/ssl/certs/ca-certificates.crt")
-;;   ((string-prefix-p "neah" system-name) "/etc/ssl/certs/ca-certificates.crt")
-;;   ((string-prefix-p "jmickey-glaptop" system-name) "/etc/ssl/certs/ca-certificates.crt")
-;;   ((string-prefix-p "manatee" system-name) "/etc/ssl/certs/ca-certificates.crt")
-;;   (t (error "No tls trust set for this host! Add exception or find cert.pem you trust"))))
-
-;; (setq tls-program
-;;       (concat "gnutls-cli --x509cafile " cm/machine-trust-file " -p %p %h"))
-
-;; (setq gnutls-verify-error t)
-;; (setq gnutls-trustfiles (list cm/machine-trust-file))
-
-;; ElDOC Disable for LSP
-;; (global-eldoc-mode -1)
-;; (eldoc-mode -1)
+;; Add my library path to load-path
+;; (push "~/.emacs.d/lisp" load-path)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -88,12 +71,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Default Encoding
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(prefer-coding-system 'utf-8)
-(set-language-environment 'utf-8)
 (set-default-coding-systems 'utf-8)
-(set-terminal-coding-system 'utf-8)
-(set-keyboard-coding-system 'utf-8)
-(set-selection-coding-system 'utf-8)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -124,7 +102,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Font and Size
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(set-frame-font "Hasklig 12")
+(set-frame-font "Hack 12")
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -308,23 +286,42 @@
 	  "*shell*")))
 
 
+
 (use-package company
-    :config
-    (setq company-idle-delay 0.3)
+  :ensure t
+  :config (progn
+            ;; don't add any dely before trying to complete thing being typed
+            ;; the call/response to gopls is asynchronous so this should have little
+            ;; to no affect on edit latency
+            (setq company-idle-delay 0)
+            ;; start completing after a single character instead of 3
+            (setq company-minimum-prefix-length 1)
+            ;; align fields in completions
+            (setq company-tooltip-align-annotations t)
+            )
+  )
 
-    (global-company-mode 1)
-
-    (global-set-key (kbd "C-<space>") 'company-complete))
+(use-package flycheck
+  :ensure t)
 
 (use-package company-lsp
   :ensure t
-  :init (push 'company-lsp company-backends)
-  :config
-  (setq company-lsp-enable-recompletion t
-	company-lsp-enable-snippet t
-	company-lsp-cache-candidates t
-	company-lsp-async t))
+  :commands company-lsp)
 
+
+(use-package go-mode
+  :ensure t
+  :bind (
+         ;; If you want to switch existing go-mode bindings to use lsp-mode/gopls instead
+         ;; uncomment the following lines
+         ;; ("C-c C-j" . lsp-find-definition)
+         ;; ("C-c C-d" . lsp-describe-thing-at-point)
+         )
+  :hook ((go-mode . lsp-deferred)
+         (before-save . lsp-format-buffer)
+         (before-save . lsp-organize-imports)))
+
+(provide 'gopls-config)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Magit
@@ -383,6 +380,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (use-package all-the-icons
   :ensure t)
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Counsel / Ivy / Swiper
@@ -482,12 +480,16 @@
   (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
   (add-hook 'cider-repl-mode-hook 'rainbow-delimiters-mode))
 
+(show-paren-mode 1)
+
+
 ;; Color each identifier
 (use-package rainbow-identifiers
   :ensure t
   :defer t
   :init
-  (add-hook 'prog-mode-hook 'rainbow-identifiers-mode))
+  (add-hook 'prog-mode-hook 'rainbow-identifiers-mode)
+  )
 
 
 
@@ -543,19 +545,25 @@ Start `ielm' if it's not already running."
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; CIDER / Clojure
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(use-package clojure-mode
+(use-package lsp-mode
   :ensure t
-  :config
-  (add-hook 'clojure-mode-hook #'paredit-mode)
-  (add-hook 'clojure-mode-hook #'subword-mode)
-  (add-hook 'clojure-mode-hook #'rainbow-delimiters-mode))
+  :commands (lsp lsp-deferred)
+  :hook (go-mode . lsp-deferred)
+  :config (progn
+            ;; use flycheck, not flymake
+            (setq lsp-prefer-flymake nil))
+  )
+;;Set up before-save hooks to format buffer and add/delete imports.
+;;Make sure you don't have other gofmt/goimports hooks enabled.
 
-(use-package cider
+(use-package lsp-ui
   :ensure t
-  :config
-  (setq nrepl-log-messages t)
-  (add-hook 'cider-repl-mode-hook #'paredit-mode)
-  (add-hook 'cider-repl-mode-hook #'rainbow-delimiters-mode))
+  :commands lsp-ui-mode
+  :config (progn
+            ;; disable inline documentation
+            (setq lsp-ui-sideline-enable nil)
+            ;; disable showing docs on hover at the top of the window
+            (setq lsp-ui-doc-enable nil))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -587,10 +595,9 @@ Start `ielm' if it's not already running."
 ;; Yasnippet
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (use-package yasnippet
-  :config
-  (yas-global-mode 1))
-
-(use-package clojure-snippets)
+  :ensure t
+  :commands yas-minor-mode
+  :hook (go-mode . yas-minor-mode))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -686,6 +693,8 @@ Start `ielm' if it's not already running."
 (global-set-key (kbd "C-c /") 'split-window-right)
 (global-set-key (kbd "C-c -") 'split-window-below)
 
+(global-set-key (kbd "C-x p") 'neotree-change-root)
+
 
 ;; ***********************************************************************
 ;; ***********************************************************************
@@ -729,6 +738,4 @@ Start `ielm' if it's not already running."
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   (quote
-    (clojure-snippets counsel yasnippet which-key use-package))))
-
+   '(go-guru company-box lsp-ui cider clojure-snippets counsel yasnippet which-key use-package)))
