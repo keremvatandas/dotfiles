@@ -322,6 +322,14 @@ nnoremap <leader>h :set list!<CR>
 "                            Git Gutter
 " ============================================================================
 " if you don't want vim-gitgutter to set up any mappings at all, use this:
+set signcolumn=yes
+
+let g:gitgutter_sign_added = '✚'
+let g:gitgutter_sign_modified = '✹'
+let g:gitgutter_sign_removed = '-'
+let g:gitgutter_sign_removed_first_line = '-'
+let g:gitgutter_sign_modified_removed = '-'
+
 let g:gitgutter_map_keys = 0
 let g:gitgutter_enabled = 0  " Turn-off Gitgutter default
 nnoremap <silent><leader>gt :GitGutterToggle<cr>
