@@ -158,7 +158,7 @@ set updatetime=300
 syntax on
 
 " Font Family
-let g:Guifont="Hasklig:h12"
+" let g:Guifont="Hasklig:h12"
 
 " colorschema
 colorscheme challenger_deep
