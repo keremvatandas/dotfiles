@@ -5,5 +5,11 @@
       "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
       "filetypes": ["go"]
     }
-  }
+  },
+  "python.venvPath": "~/.virtualenvs/",
+  "python.jediPath": "~/.virtualenvs/neovim/lib/python3.9/site-packages/",
+  "python.jediEnabled": true,
+  "suggest.timeout": 5000,
+  "python.linting.pylintEnabled": true,
+  "python.linting.flake8Enabled": false
 }

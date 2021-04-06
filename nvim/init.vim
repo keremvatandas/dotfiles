@@ -89,7 +89,6 @@ Plug 'wincent/ferret'
 Plug 'fatih/vim-go'
 Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 
-
 call plug#end()
 
 
@@ -283,10 +282,9 @@ if has('nvim')
     autocmd TermOpen * setlocal nonumber norelativenumber
   augroup END<Paste>
 
-
 let g:loaded_python_provider=0
 " let g:python_host_prog = '/usr/local/bin/python3'
-let g:python3_host_prog = '/usr/local/bin/python3'
+let g:python3_host_prog = '~/.virtualenvs/neovim/bin/python3'
   " let g:python_host_prog = $HOME . '/.virtualenvs/neovim2/bin/python'
   " let g:python3_host_prog = $HOME . '/.virtualenvs/neovim3/bin/python'
 else
