@@ -40,3 +40,16 @@ luarocks install telescope
 ### Golang Packages and PATH Settings
 
 - https://gist.github.com/keremvatandas/f447787a1bbd60b9a04f927ebc0e315b
+
+
+### Tmux Conf
+
+- You have to install Tmux Plugin Manager (https://github.com/tmux-plugins/tpm)
+
+
+```language-bash
+ln -s dotfiles/tmux/tmux.conf ~/.tmux.conf
+tmux source ~/.tmux.conf
+
+# Control a + I 
+```
