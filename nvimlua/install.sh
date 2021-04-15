@@ -41,7 +41,6 @@ installpip() {
 	echo "Installing pip..."
 	[ "$(uname)" == "Darwin" ] && installpiponmac
 	[ -n "$(uname -a | grep Ubuntu)" ] && installpiponubuntu
-	[ -f "/etc/arch-release" ] && installpiponarch
 	[ "$(expr substr $(uname -s) 1 10)" == "MINGW64_NT" ] && echo "Windows not currently supported"
 }
 
@@ -56,7 +55,8 @@ installpacker() {
 
 cloneconfig() {
 	echo "Cloning Nvim configuration"
-	git clone https://github.com/keremvatandas/dotfiles.git ~/.config/nvim
+	git clone https://github.com/keremvatandas/dotfiles.git ~/.dotfiles
+	ln -s ~/.dotfiles/nvimlua/ ~/.config/nvim
 	nvim -u $HOME/.config/nvim/init.lua +PackerInstall
 }
 
