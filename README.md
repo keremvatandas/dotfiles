@@ -7,7 +7,7 @@
 ### install dependencies
 
 ```language-bash
-brew install git lua luajit luarocks node fzf python3 ripgrep pbcopy the_silver_searcher ninja libtool automake cmake pkg-config gettext go 
+brew install git lua luajit luarocks node fzf python3 ripgrep pbcopy the_silver_searcher ninja libtool automake cmake pkg-config gettext go glow 
 ```
 
 ### Neovim 0.5+

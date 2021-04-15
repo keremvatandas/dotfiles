@@ -6,7 +6,12 @@
       "filetypes": ["go"]
     }
   },
-  "python.venvPath": "~/.pyenv/versions/logsign/",
-  "python.pythonPath": "~/.pyenv/versions/3.6.3/bin/python3.6",
-  "python.linting.pylintEnabled": true
+  "python.venvPath": "~/.pyenv",
+  "python.pythonPath": "~/.pyenv/versions/3.6.3/envs/logsign/bin/python3.6",
+  "coc.preferences.maxFileSize": "100MB",
+  "python.linting.enabled": true,
+  "python.linting.pylintEnabled": true,
+  "python.autoUpdateLanguageServer": true,
+  "python.jediEnabled": true,
+  "python.jediMemoryLimit": -1
 }

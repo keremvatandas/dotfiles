@@ -35,8 +35,9 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 
 Plug 'junegunn/fzf.vim'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf', {'do': {-> fzf#install()}}
 Plug 'kien/ctrlp.vim'  " CTRL-P / Fuzzy Finder
+Plug 'ojroques/nvim-lspfuzzy'
 
 Plug 'tpope/vim-vinegar', {'on': '<Plug>VinegarVerticalSplitUp'} " SplitWindows
 
@@ -57,6 +58,8 @@ Plug 'pelodelfuego/vim-swoop'
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
+
+
 " ============================================================================
 "                                Editing
 " ============================================================================
@@ -82,12 +85,17 @@ Plug 'tpope/vim-abolish'
 Plug 'wincent/ferret'
 
 
+" MarkDown Preview
+Plug 'npxbr/glow.nvim', {'do': ':GlowInstall'}  " leader mp
 
 " ============================================================================
 "                       Programming Lang / Tools
 " ============================================================================
 Plug 'fatih/vim-go'
 Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
+
+
+Plug 'ray-x/lsp_signature.nvim'  " Function Signature like VsCode
 
 call plug#end()
 
@@ -773,3 +781,7 @@ nmap <silent><leader><Up> :wincmd k<CR>
 nmap <silent><leader><Down> :wincmd j<CR>
 nmap <silent><leader><Left> :wincmd h<CR>
 nmap <silent><leader><Right> :wincmd l<CR>
+
+
+nmap <leader>mp :Glow<CR>
+
