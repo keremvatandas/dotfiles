@@ -32,5 +32,8 @@ return require("packer").startup(
         use "terrortylor/nvim-comment"
         use "nekonako/xresources-nvim"
         use "glepnir/dashboard-nvim"
+
+        use "preservim/tagbar"
+        use "mbbill/undotree"
     end
 )

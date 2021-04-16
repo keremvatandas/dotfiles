@@ -1,8 +1,6 @@
 -- load all plugins
 require "pluginsList.lua"
 require "file-icons.lua"
-
-require "misc-utils.lua"
 require "bufferline.lua"
 require "statusline.lua"
 
@@ -15,12 +13,31 @@ require "compe.lua"
 
 local cmd = vim.cmd
 local g = vim.g
+local o = vim.o
+local w = vim.w
+local b = vim.b
 
-vim.g.mapleader = " "
-vim.g.auto_save = 1
+g.mapleader = " "
+g.auto_save = 1
+
+o.hidden = true
+o.ignorecase = true
+o.splitbelow = true
+o.splitright = true
+o.termguicolors = true
+o.numberwidth = 2
+o.mouse = "a"
+o.cmdheight = 1
+o.updatetime = 250
+o.clipboard = "unnamedplus"
+
+w.number = true
+w.signcolumn = "yes"
+
+b.shiftwidth = 2
+
 
 -- colorscheme related stuff
-
 cmd "syntax enable"
 cmd "syntax on"
 
@@ -42,8 +59,7 @@ g.indent_blankline_show_trailing_blankline_indent = false
 g.indent_blankline_show_first_indent_level = false
 
 require('nvim_comment').setup()
-vim.api.nvim_set_keymap("n", "<leader>/", ":CommentToggle<CR>", {noremap=true, silent=true})
-vim.api.nvim_set_keymap("v", "<leader>/", ":CommentToggle<CR>", {noremap=true, silent=true})
+
 
 require("treesitter.lua")
 require("mappings.lua")
@@ -68,7 +84,6 @@ require "nvimTree.lua"
 require "gitsigns.lua"
 
 require("nvim-autopairs").setup()
-
 
 -- symbols for autocomplete
 require('lspkind').init({
@@ -110,8 +125,55 @@ cmd("highlight! StatusLineNC gui=underline guibg=NONE guifg=#383c44")
 cmd "hi clear CursorLine"
 cmd "hi cursorlinenr guibg=NONE guifg=#abb2bf"
 
-
+--  local mode_map = {
+-- 	['n'] = 'normal ',
+-- 	['no'] = 'náoperator pending ',
+-- 	['v'] = 'visual ',
+-- 	['V'] = 'váline ',
+-- 	[''] = 'váblock ',
+-- 	['s'] = 'select ',
+-- 	['S'] = 'sáline ',
+-- 	[''] = 'sáblock ',
+-- 	['i'] = 'insert ',
+-- 	['R'] = 'replace ',
+-- 	['Rv'] = 'váreplace ',
+-- 	['c'] = 'command ',
+-- 	['cv'] = 'vim ex ',
+-- 	['ce'] = 'ex ',
+-- 	['r'] = 'prompt ',
+-- 	['rm'] = 'more ',
+-- 	['r?'] = 'confirm ',
+-- 	['!'] = 'shell ',
+-- 	['t'] = 'terminal '
+-- }
+--
 
 -- Which Key (Hope to replace with Lua plugin someday)
 -- vim.cmd('source ~/.config/nvim/vimscript/lv-whichkey/init.vim')
 -- vim.cmd('source ~/.config/nvim/vimscript/functions.vim')
+
+local map = vim.api.nvim_set_keymap
+
+map("n", "<leader>t", ":TagbarToggle<CR>", {noremap=true, silent=true})
+map("v", "<leader>t", ":TagbarToggle<CR>", {noremap=true, silent=true})
+
+map("n", "<leader>ut", ":UndotreeToggle<CR>", {noremap=true, silent=true})
+map("v", "<leader>ut", ":UndotreeToggle<CR>", {noremap=true, silent=true})
+
+
+map("n", "<leader>/", ":vsplit<CR>", {noremap=true, silent=true})
+map("v", "<leader>/", ":vsplit<CR>", {noremap=true, silent=true})
+
+map("n", "<leader>-", ":split<CR>", {noremap=true, silent=true})
+map("v", "<leader>-", ":split<CR>", {noremap=true, silent=true})
+
+map("n", "<C-c>/", ":CommentToggle<CR>", {noremap=true, silent=true})
+map("v", "<C-c>/", ":CommentToggle<CR>", {noremap=true, silent=true})
+
+map("n", "<leader>fs", ":w<CR>", {noremap=true, silent=true})
+map("n", "<leader>qq", ":q!<CR>", {noremap=true, silent=true})
+
+map("n", "<leader><Up>", ":wincmd k<CR>", {noremap=true, silent=true})
+map("n", "<leader><Down>", ":wincmd j<CR>", {noremap=true, silent=true})
+map("n", "<leader><Left>", ":wincmd h<CR>", {noremap=true, silent=true})
+map("n", "<leader><Right>", ":wincmd l<CR>", {noremap=true, silent=true})
