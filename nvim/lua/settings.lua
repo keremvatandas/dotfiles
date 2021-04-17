@@ -42,7 +42,7 @@ cmd "colorscheme dracula"
 
 -- blankline
 g.indentLine_enabled = 1
-g.indent_blankline_char = "â”Š"
+g.indent_blankline_char = "┊"
 
 cmd "hi IndentBlanklineChar guifg=#2a2e36"
 

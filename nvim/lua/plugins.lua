@@ -17,6 +17,7 @@ return require('packer').startup(function(use)
     use 'glepnir/lspsaga.nvim'
     use 'onsails/lspkind-nvim'
     use 'kabouzeid/nvim-lspinstall'
+    use 'nvim-lua/lsp-status.nvim'
 
     -- Telescope
     use 'nvim-lua/popup.nvim'

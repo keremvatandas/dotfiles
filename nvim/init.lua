@@ -19,20 +19,8 @@ require("nvim-autopairs").setup()
 require("colorizer").setup()
 require('nvim_comment').setup()
 
-require("configs.lspconfig")
--- Lsp
---require('configs.lsp')
-require('configs.lsp.python')
-require('configs.lsp.go')
-require('configs.lsp.yaml')
-require('configs.lsp.lua')
-require('configs.lsp.bash')
-require('configs.lsp.css')
-require('configs.lsp.docker')
-require('configs.lsp.html')
-require('configs.lsp.js-ts')
-require('configs.lsp.json')
-require('configs.lsp.vim')
+require("configs.lspconfig")            -- Lsp All Configs (Langs)
+
 
 -- Which Key (Hope to replace with Lua plugin someday)
 -- vim.cmd('source ~/.config/nvim/vimscript/lv-whichkey/init.vim')
