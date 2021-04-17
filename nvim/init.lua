@@ -24,9 +24,16 @@ require('nvim_comment').setup()
 require('configs.lsp.python')
 require('configs.lsp.go')
 require('configs.lsp.yaml')
+require('configs.lsp.lua')
+require('configs.lsp.bash')
+require('configs.lsp.css')
+require('configs.lsp.docker')
+require('configs.lsp.html')
+require('configs.lsp.typescript')
+require('configs.lsp.json')
+require('configs.lsp.vim')
 
-
-
+require("configs.lspconfig")
 -- Which Key (Hope to replace with Lua plugin someday)
 -- vim.cmd('source ~/.config/nvim/vimscript/lv-whichkey/init.vim')
 -- vim.cmd('source ~/.config/nvim/vimscript/functions.vim')

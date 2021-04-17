@@ -1,0 +1,3 @@
+require'lspconfig'.vim.setup{
+    on_attach=require'completion'.on_attach
+}
