@@ -3,46 +3,27 @@ require("plugins")
 require("configs.file-icons")
 require("configs.bufferline")
 require("configs.statusline")
-require("colorizer").setup()
-require("lspinstall").setup()
 require("configs.compe")
-require("configs.lspconfig")
 require("settings")                     -- Nvim Global Settings
 require("keymappings")                  -- All Shortcuts
-require('nvim_comment').setup()
 require("configs.treesitter")
 require("configs.dashboard")
 require("configs.telescope")
 require("configs.nvimTree")
 require("configs.gitsigns")
-require("nvim-autopairs").setup()
 
--- symbols for autocomplete
-require('lspkind').init({
-    with_text = true,
-    symbol_map = {
-      Text = '  ',
-      Method = '  ',
-      Function = '  ',
-      Constructor = '  ',
-      Variable = '[]',
-      Class = '  ',
-      Interface = ' 蘒',
-      Module = '  ',
-      Property = '  ',
-      Unit = ' 塞 ',
-      Value = '  ',
-      Enum = ' 練',
-      Keyword = '  ',
-      Snippet = '  ',
-      Color = '',
-      File = '',
-      Folder = ' ﱮ ',
-      EnumMember = '  ',
-      Constant = '  ',
-      Struct = '  '
-    },
-})
+require('configs.lspkind')              -- symbols for autocomplete
+
+require("lspinstall").setup()
+require("nvim-autopairs").setup()
+require("colorizer").setup()
+require('nvim_comment').setup()
+
+-- Lsp
+--require('configs.lsp')
+require('configs.lsp.python')
+require('configs.lsp.go')
+require('configs.lsp.yaml')
 
 
 
