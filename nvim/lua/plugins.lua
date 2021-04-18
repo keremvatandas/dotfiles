@@ -44,6 +44,7 @@ return require('packer').startup(function(use)
     use "norcalli/nvim-colorizer.lua"
     use "Yggdroot/indentLine"
     use "alvan/vim-closetag"                        -- CloseTag exm. <html>
+    use "ntpeters/vim-better-whitespace"
 
     -- UI
     use "challenger-deep-theme/vim"                    -- Colorscheme

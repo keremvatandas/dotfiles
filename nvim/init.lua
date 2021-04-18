@@ -11,6 +11,7 @@ require("configs.dashboard")
 require("configs.telescope")
 require("configs.nvimTree")
 require("configs.gitsigns")
+require("configs.betterWhitespace")
 
 require('configs.lspkind')              -- symbols for autocomplete
 
