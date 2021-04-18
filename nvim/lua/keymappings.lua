@@ -1,5 +1,6 @@
 local map = vim.api.nvim_set_keymap
 
+map("n", "<leader>l", ":set list!<CR>", {noremap=true, silent=true})
 
 map("n", "<leader>/", ":vsplit<CR>", {noremap=true, silent=true})
 map("v", "<leader>/", ":vsplit<CR>", {noremap=true, silent=true})

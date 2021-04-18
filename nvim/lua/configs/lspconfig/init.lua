@@ -43,7 +43,7 @@ for _, lsp in ipairs(servers) do
   }
 end
 
-require'lspconfig'.python.setup{
+nvim_lsp.python.setup{
     on_attach=custom_attach,
     capabilities = lsp_status.capabilities,
     settings = {

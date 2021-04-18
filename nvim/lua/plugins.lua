@@ -46,7 +46,7 @@ return require('packer').startup(function(use)
     use "alvan/vim-closetag"                        -- CloseTag exm. <html>
 
     -- UI
-    use "dracula/vim"                               -- Colorscheme
+    use "challenger-deep-theme/vim"                    -- Colorscheme
     use 'kyazdani42/nvim-web-devicons'              -- Need https://www.nerdfonts.com/font-downloads
     use "glepnir/dashboard-nvim"                    -- Dashboard
     use 'nvim-treesitter/nvim-treesitter'           -- TreeSitter
