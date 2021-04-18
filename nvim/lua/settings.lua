@@ -27,8 +27,8 @@ opt('o', 'smartcase', true)                           -- Don't ignore case with 
 opt('o', 'splitbelow', true)                          -- Put new windows below current
 opt('o', 'splitright', true)                          -- Put new windows right of current
 opt('o', 'termguicolors', true)                       -- True color support
-opt('o', 'ignorecase', true)                       -- True color support
-opt('o', 'mouse', 'a')                       -- True color support
+opt('o', 'ignorecase', true)                          -- True color support
+opt('o', 'mouse', 'a')                                -- True color support
 opt('o', 'wildmode', 'list:longest')                  -- Command-line completion mode
 opt('w', 'list', true)                                -- Show some invisible characters (tabs...)
 opt('w', 'number', true)                              -- Print line number
@@ -36,21 +36,15 @@ opt('w', 'relativenumber', true)                      -- Relative line numbers
 opt('w', 'wrap', false)                               -- Disable line wrap
 
 -- colorscheme related stuff
-cmd "syntax enable"
 cmd "syntax on"
 cmd "colorscheme dracula"
 
+cmd('set iskeyword+=-') -- treat dash separated words as a word text object"
+cmd('set shortmess+=c') -- Don't pass messages to |ins-completion-menu|.
+cmd('set inccommand=split') -- Make substitution work in realtime
+
 -- blankline
-g.indentLine_enabled = 1
-g.indent_blankline_char = "┊"
-
-cmd "hi IndentBlanklineChar guifg=#2a2e36"
-
-g.indent_blankline_filetype_exclude = {"help", "terminal"}
-g.indent_blankline_buftype_exclude = {"terminal"}
-
-g.indent_blankline_show_trailing_blankline_indent = false
-g.indent_blankline_show_first_indent_level = false
+g.indentLine_char_list = '┊'
 
 -- highlights --
 cmd "hi LineNr guifg=#42464e guibg=NONE"
@@ -63,3 +57,9 @@ cmd "hi PmenuSel guibg=#98c379"
 cmd "hi Pmenu  guibg=#282c34"
 
 cmd "hi Normal guibg=NONE ctermbg=NONE"
+
+-- inactive statuslines as thin splitlines
+cmd("highlight! StatusLineNC gui=underline guibg=NONE guifg=#383c44")
+
+cmd "hi clear CursorLine"
+cmd "hi cursorlinenr guibg=NONE guifg=#abb2bf"

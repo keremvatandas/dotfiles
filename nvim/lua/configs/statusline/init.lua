@@ -108,15 +108,34 @@ gls.left[6] = {
 }
 
 gls.right[1] = {
-    DiagnosticError = {provider = 'DiagnosticError', icon = '  ', highlight = {colors.error_red, colors.bg}}
+    DiagnosticError = {
+        provider = 'DiagnosticError',
+        icon = '  ',
+        highlight = {colors.error_red, colors.bg}}
 }
-gls.right[2] = {DiagnosticWarn = {provider = 'DiagnosticWarn', icon = '  ', highlight = {colors.orange, colors.bg}}}
+gls.right[2] = {
+    DiagnosticWarn = {
+        provider = 'DiagnosticWarn', 
+        icon = '  ', 
+        highlight = {colors.orange, colors.bg}
+    }
+}
 
 gls.right[3] = {
-    DiagnosticHint = {provider = 'DiagnosticHint', icon = '  ', highlight = {colors.vivid_blue, colors.bg}}
+    DiagnosticHint = {
+        provider = 'DiagnosticHint', 
+        icon = '  ', 
+        highlight = {colors.vivid_blue, colors.bg}
+    }
 }
 
-gls.right[4] = {DiagnosticInfo = {provider = 'DiagnosticInfo', icon = '  ', highlight = {colors.info_yellow, colors.bg}}}
+gls.right[4] = {
+    DiagnosticInfo = {
+        provider = 'DiagnosticInfo', 
+        icon = '  ', 
+        highlight = {colors.info_yellow, colors.bg}
+    }
+}
 
 gls.right[5] = {
     ShowLspClient = {
@@ -126,8 +145,8 @@ gls.right[5] = {
             if tbl[vim.bo.filetype] then return false end
             return true
         end,
-        icon = ' ',
-        highlight = {colors.grey, colors.bg}
+        icon = '  Lsp:',
+        highlight = {colors.string_orange, colors.bg}
     }
 }
 
@@ -145,7 +164,7 @@ gls.right[7] = {
         provider = 'LinePercent',
         separator = ' ',
         separator_highlight = {'NONE', colors.bg},
-        highlight = {colors.grey, colors.bg}
+        highlight = {colors.dark_yellow, colors.bg}
     }
 }
 
@@ -190,6 +209,12 @@ gls.right[11] = {
         separator_highlight = {'NONE', colors.bg},
         highlight = {colors.orange, colors.bg}
     }
+}
+gls.right[12] = {
+  RainbowBlue = {
+    provider = function() return ' ▊' end,
+    highlight = {colors.blue,colors.bg}
+  },
 }
 
 gls.short_line_left[1] = {

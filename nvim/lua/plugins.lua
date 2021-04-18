@@ -42,7 +42,7 @@ return require('packer').startup(function(use)
     use 'kevinhwang91/nvim-bqf'
     use "sbdchd/neoformat"
     use "norcalli/nvim-colorizer.lua"
-    use "lukas-reineke/indent-blankline.nvim"
+    use "Yggdroot/indentLine"
     use "alvan/vim-closetag"                        -- CloseTag exm. <html>
 
     -- UI
