@@ -27,7 +27,6 @@ opt('o', 'smartcase', true)                           -- Don't ignore case with 
 opt('o', 'splitbelow', true)                          -- Put new windows below current
 opt('o', 'splitright', true)                          -- Put new windows right of current
 opt('o', 'termguicolors', true)                       -- True color support
-opt('o', 'ignorecase', true)                          -- Ignore Case
 opt('o', 'mouse', 'a')                                -- Mouse Active
 opt('o', 'wildmode', 'list:longest')                  -- Command-line completion mode
 opt('w', 'list', true)                                -- Show some invisible characters (tabs...)
@@ -40,8 +39,9 @@ opt('w', 'wrap', false)                               -- Disable line wrap
 
 cmd([[set list]])
 cmd([[set listchars=trail:·,precedes:«,extends:»,space:·,eol:↲,tab:▸\]])
-
-
+cmd([[set clipboard=unnamedplus]])
+cmd([[set autochdir]])
+cmd([[set ruler]])
 cmd([[set cursorline]])
 
 
