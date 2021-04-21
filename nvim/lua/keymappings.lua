@@ -53,3 +53,4 @@ map("n", "<leader><BS>", ":StripWhitespace<CR>", {noremap=true, silent=true})
 
 map("n", "<leader>d", ":Dashboard<CR>", {noremap=true, silent=true})
 
+map("n", "<leader>md", ":MarkdownPreviewToggle<CR>", {noremap=true, silent=true})

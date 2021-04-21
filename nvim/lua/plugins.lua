@@ -56,6 +56,9 @@ return require('packer').startup(function(use)
     use "preservim/tagbar"                          -- Tagbar (need ctags)
     use "mbbill/undotree"                           -- UndoTree
 
+      -- Plugins can have post-install/update hooks
+    use {'iamcco/markdown-preview.nvim', run = 'cd app && yarn install', cmd = 'MarkdownPreview'}  -- mkdp#util#install()
+
     -- Status Line and Bufferline
     use 'glepnir/galaxyline.nvim'                   -- Status Line
     use 'akinsho/nvim-bufferline.lua'               -- Buffer Line
