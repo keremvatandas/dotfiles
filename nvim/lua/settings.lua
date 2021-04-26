@@ -45,6 +45,10 @@ cmd([[set ruler]])
 cmd([[set cursorline]])
 
 
+
+cmd([[let &colorcolumn="80,".join(range(120,999),",")]])
+cmd("highlight ColorColumn ctermbg=235 guibg=#2c2d27")
+
 -- colorscheme related stuff
 cmd "syntax on"
 cmd "colorscheme challenger_deep"
