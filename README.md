@@ -1,21 +1,13 @@
 # For Neovim
 
-### You have to edit coc-settings.json file !!!
-    - Install Golang and Package
-    - Python VirtualEnv Pyenv | VirtualEnv | VirtualEnvWrapper
-
-### install dependencies
-
-```language-bash
-brew install git lua luajit luarocks node fzf python3 ripgrep pbcopy the_silver_searcher ninja libtool automake cmake pkg-config gettext go glow 
-```
-
-### Neovim 0.5+
+### Neovim 0.5+ / Luajit / luarocks
 
 ```language-bash
 brew install --HEAD neovim
 # or
 brew upgrade neovim --fetch-HEAD
+
+brew install --HEAD luajit
 ```
 
 ### luarock for telescope
@@ -24,17 +16,8 @@ brew upgrade neovim --fetch-HEAD
 luarocks install telescope
 ```
 
-
-### Coc-Packages
-
-```language-bash
-:CocInstall coc-json coc-css coc-python coc-snippets coc-prettier coc-go
-```
-
-
 ### Iterm Font
-
-- https://github.com/tonsky/FiraCode
+    - You have to use NERD or Powerline Fonts  [for icon problems]
 
 
 ### Golang Packages and PATH Settings
@@ -53,3 +36,10 @@ tmux source ~/.tmux.conf
 
 # Control a + I 
 ```
+
+
+### Preview Tmux and Nvim
+
+![alt text](https://raw.githubusercontent.com/keremvatandas/dotfiles/master/images/nvim0.png "Nvim Dashboard")
+
+![alt text](https://raw.githubusercontent.com/keremvatandas/dotfiles/master/images/nvim1.png "Nvim Dashboard")
