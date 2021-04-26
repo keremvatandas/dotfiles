@@ -29,8 +29,6 @@ return require('packer').startup(function(use)
     use 'mfussenegger/nvim-dap'
 
     -- Autocomplete
-    use 'hrsh7th/nvim-compe'
-    use 'hrsh7th/vim-vsnip'
     use 'rafamadriz/friendly-snippets'
     use 'nvim-lua/completion-nvim'
 
@@ -47,7 +45,8 @@ return require('packer').startup(function(use)
     use "ntpeters/vim-better-whitespace"
 
     -- UI
-    use "challenger-deep-theme/vim"                    -- Colorscheme
+    -- use "challenger-deep-theme/vim"                    -- Colorscheme
+    use "ghifarit53/tokyonight-vim"
     use 'kyazdani42/nvim-web-devicons'              -- Need https://www.nerdfonts.com/font-downloads
     use "glepnir/dashboard-nvim"                    -- Dashboard
     use 'nvim-treesitter/nvim-treesitter'           -- TreeSitter

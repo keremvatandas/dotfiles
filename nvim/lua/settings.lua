@@ -43,7 +43,7 @@ cmd([[set clipboard=unnamedplus]])
 cmd([[set autochdir]])
 cmd([[set ruler]])
 cmd([[set cursorline]])
-cmd([[let g:indentLine_enabled = 0]])
+cmd([[let g:indentLine_enabled = 1]])
 
 
 cmd([[let &colorcolumn="80,".join(range(120,999),",")]])
@@ -51,7 +51,7 @@ cmd("highlight ColorColumn ctermbg=235 guibg=#2c2d27")
 
 -- colorscheme related stuff
 cmd "syntax on"
-cmd "colorscheme challenger_deep"
+cmd "colorscheme tokyonight"
 
 cmd('set iskeyword+=-') -- treat dash separated words as a word text object"
 cmd('set shortmess+=c') -- Don't pass messages to |ins-completion-menu|.

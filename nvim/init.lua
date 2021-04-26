@@ -3,7 +3,7 @@ require("plugins")
 require("configs.file-icons")
 require("configs.bufferline")
 require("configs.statusline")
-require("configs.compe")
+
 require("settings")                     -- Nvim Global Settings
 require("keymappings")                  -- All Shortcuts
 require("configs.treesitter")

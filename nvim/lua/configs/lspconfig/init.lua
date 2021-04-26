@@ -2,6 +2,10 @@ local nvim_lsp = require('lspconfig')
 local lsp_status = require('lsp-status')
 local completion = require('completion')
 
+local saga = require 'lspsaga'
+saga.init_lsp_saga()
+
+
 local map = function(type, key, value)
 	vim.api.nvim_buf_set_keymap(0,type,key,value,{noremap = true, silent = true});
 end
@@ -12,22 +16,37 @@ local custom_attach = function(client)
     completion.on_attach(client)
     lsp_status.on_attach(client)
 
-    map('n','gD','<cmd>lua vim.lsp.buf.declaration()<CR>')
+    --map('n','gD','<cmd>lua vim.lsp.buf.declaration()<CR>')
     map('n','gd','<cmd>lua vim.lsp.buf.definition()<CR>')
-    map('n','K','<cmd>lua vim.lsp.buf.hover()<CR>')
-    map('n','gr','<cmd>lua vim.lsp.buf.references()<CR>')
-    map('n','gs','<cmd>lua vim.lsp.buf.signature_help()<CR>')
-    map('n','gi','<cmd>lua vim.lsp.buf.implementation()<CR>')
-    map('n','gt','<cmd>lua vim.lsp.buf.type_definition()<CR>')
-    map('n','<leader>gw','<cmd>lua vim.lsp.buf.document_symbol()<CR>')
-    map('n','<leader>gW','<cmd>lua vim.lsp.buf.workspace_symbol()<CR>')
-    map('n','<leader>ah','<cmd>lua vim.lsp.buf.hover()<CR>')
-    map('n','<leader>af','<cmd>lua vim.lsp.buf.code_action()<CR>')
-    map('n','<leader>ee','<cmd>lua vim.lsp.util.show_line_diagnostics()<CR>')
-    map('n','<leader>ar','<cmd>lua vim.lsp.buf.rename()<CR>')
-    map('n','<leader>=', '<cmd>lua vim.lsp.buf.formatting()<CR>')
-    map('n','<leader>ai','<cmd>lua vim.lsp.buf.incoming_calls()<CR>')
-    map('n','<leader>ao','<cmd>lua vim.lsp.buf.outgoing_calls()<CR>')
+    map('n','gp','<cmd>:Lspsaga preview_defination<CR>')
+
+    map('n','K','<cmd>:Lspsaga hover_doc<CR>')
+    map('n','gf','<cmd>:Lspsaga lsp_finder<CR>')
+    map('n','gs','<cmd>:Lspsaga signature_help<CR>')
+    map('n','gr','<cmd>:Lspsaga rename<CR>')
+
+    map('n','<leader>ca','<cmd>:Lspsaga code_action<CR>')
+    map('n','<leader>ca','<cmd>:Lspsaga range_code_action<CR>')
+
+    map('n','<leader>ee','<cmd>:Lspsaga show_line_diagnostics<CR>')
+    map('n','<leader>ec','<cmd>:Lspsaga show_cursor_diagnostics<CR>')
+    map('n','[e','<cmd>:Lspsaga diagnostic_jump_next<CR>')
+    map('n',']e','<cmd>:Lspsaga diagnostic_jump_prev<CR>')
+
+  -- Set autocommands conditional on server_capabilities
+    if client.resolved_capabilities.document_highlight then
+    vim.api.nvim_exec([[
+        hi LspReferenceRead cterm=bold ctermbg=red guibg=DarkRed
+        hi LspReferenceText cterm=bold ctermbg=red guibg=DarkRed
+        hi LspReferenceWrite cterm=bold ctermbg=red guibg=DarkRed
+        augroup lsp_document_highlight
+        autocmd! * <buffer>
+        autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
+        autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+        augroup END
+    ]], false)
+    end
+
 end
 
 
