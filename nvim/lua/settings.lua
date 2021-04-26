@@ -43,7 +43,7 @@ cmd([[set clipboard=unnamedplus]])
 cmd([[set autochdir]])
 cmd([[set ruler]])
 cmd([[set cursorline]])
-
+cmd([[let g:indentLine_enabled = 0]])
 
 
 cmd([[let &colorcolumn="80,".join(range(120,999),",")]])
