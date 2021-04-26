@@ -20,15 +20,35 @@ luarocks install telescope
     - You have to use NERD or Powerline Fonts  [for icon problems]
 
 
+### Edit
+
+- You have to edit nvim/lua/configs/lspconfig/init.lua
+
+```
+    python = {
+        pythonPath = "<pyPath>",
+        venvPath = "<venvPath>"
+    },
+```
+
 ### Golang Packages and PATH Settings
 
 - https://gist.github.com/keremvatandas/f447787a1bbd60b9a04f927ebc0e315b
 
 
+### NeoVim Conf
+
+
+```language-bash
+git clone https://github.com/wbthomason/packer.nvim\
+ ~/.local/share/nvim/site/pack/packer/start/packer.nvim
+
+ln -s ~/dotfiles/nvim/ ~/.config/
+```
+
 ### Tmux Conf
 
 - You have to install Tmux Plugin Manager (https://github.com/tmux-plugins/tpm)
-
 
 ```language-bash
 ln -s dotfiles/tmux/tmux.conf ~/.tmux.conf
