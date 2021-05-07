@@ -43,11 +43,13 @@ return require('packer').startup(function(use)
     use "alvan/vim-closetag"                        -- CloseTag exm. <html>
     use "ntpeters/vim-better-whitespace"
 
+    -- Plugins can have post-install/update hooks
+    use {'npxbr/glow.nvim', run=':GlowInstall'}
+
     -- UI
     -- use "challenger-deep-theme/vim"                    -- Colorscheme
     use "ghifarit53/tokyonight-vim"
     use 'kyazdani42/nvim-web-devicons'              -- Need https://www.nerdfonts.com/font-downloads
-    use "glepnir/dashboard-nvim"                    -- Dashboard
     use 'nvim-treesitter/nvim-treesitter'           -- TreeSitter
 
     use 'kyazdani42/nvim-tree.lua'                  -- NvimTree

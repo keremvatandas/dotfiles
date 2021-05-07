@@ -7,7 +7,6 @@ require("configs.statusline")
 require("settings")                     -- Nvim Global Settings
 require("keymappings")                  -- All Shortcuts
 require("configs.treesitter")
-require("configs.dashboard")
 require("configs.telescope")
 require("configs.nvimTree")
 require("configs.gitsigns")

@@ -12,7 +12,6 @@ end
 
 
 local custom_attach = function(client)
-    print("LSP started.");
     completion.on_attach(client)
     lsp_status.on_attach(client)
 
@@ -67,8 +66,7 @@ nvim_lsp.pyright.setup{
     settings = {
         python = {
             pythonPath = "/Users/keremv/.pyenv/versions/logsign/bin/python3.6",
-            venvPath = "/Users/keremv/.pyenv/",
-            venv = "xsoar"
+            venvPath = "/Users/keremv/.pyenv/"
         },
     }
 }
