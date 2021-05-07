@@ -26,8 +26,8 @@ require "bufferline".setup {
             guibg = "#1e222a"
         },
         buffer_selected = {
-            guifg = normal_fg,
-            guibg = "#282c34",
+            guifg = "#000000",
+            guibg = "#FF8800",
             gui = "bold"
         },
         buffer_visible = {
