@@ -16,7 +16,6 @@ return require('packer').startup(function(use)
     use 'neovim/nvim-lspconfig'
     use 'glepnir/lspsaga.nvim'
     use 'onsails/lspkind-nvim'
-    use 'kabouzeid/nvim-lspinstall'
     use 'nvim-lua/lsp-status.nvim'
 
     -- Telescope
@@ -54,9 +53,6 @@ return require('packer').startup(function(use)
     use 'kyazdani42/nvim-tree.lua'                  -- NvimTree
     use "preservim/tagbar"                          -- Tagbar (need ctags)
     use "mbbill/undotree"                           -- UndoTree
-
-      -- Plugins can have post-install/update hooks
-    use {'iamcco/markdown-preview.nvim', run = 'cd app && yarn install', cmd = 'MarkdownPreview'}  -- mkdp#util#install()
 
     -- Status Line and Bufferline
     use 'glepnir/galaxyline.nvim'                   -- Status Line

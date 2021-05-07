@@ -15,7 +15,6 @@ require("configs.betterWhitespace")
 
 require('configs.lspkind')              -- symbols for autocomplete
 
-require("lspinstall").setup()
 require("nvim-autopairs").setup()
 require("colorizer").setup()
 require('nvim_comment').setup()
