@@ -37,43 +37,24 @@ opt('w', 'wrap', false)                               -- Disable line wrap
 
 
 
-cmd([[set list]])
-cmd([[set listchars=trail:·,precedes:«,extends:»,space:·,eol:↲,tab:▸\]])
-cmd([[set clipboard=unnamedplus]])
-cmd([[set autochdir]])
-cmd([[set ruler]])
-cmd([[set cursorline]])
-cmd([[let g:indentLine_enabled = 1]])
+cmd "set list"
+cmd [[set listchars=trail:·,precedes:«,extends:»,space:·,eol:↲,tab:▸\]]
+cmd "set clipboard=unnamedplus"
+cmd "set autochdir"
+cmd "set ruler"
+cmd "set cursorline"
+cmd "let g:indentLine_enabled = 1"
 
+cmd [[let &colorcolumn="80,".join(range(120,999),",")]]
+cmd "highlight ColorColumn ctermbg=0 guibg=#2c2d27"
 
-cmd([[let &colorcolumn="80,".join(range(120,999),",")]])
-cmd("highlight ColorColumn ctermbg=235 guibg=#2c2d27")
-
--- colorscheme related stuff
 cmd "syntax on"
 cmd "colorscheme tokyonight"
+cmd "hi Comment guifg=#88C4B2"
 
-cmd('set iskeyword+=-') -- treat dash separated words as a word text object"
-cmd('set shortmess+=c') -- Don't pass messages to |ins-completion-menu|.
-cmd('set inccommand=split') -- Make substitution work in realtime
+cmd "set iskeyword+=-"                  -- treat dash separated words as a word text object"
+cmd "set shortmess+=c"                  -- Don't pass messages to |ins-completion-menu|.
+cmd "set inccommand=split"              -- Make substitution work in realtime
 
 -- blankline
 -- g.indentLine_char_list = [[┆]]
-
--- highlights --
-cmd "hi LineNr guifg=#42464e guibg=NONE"
-cmd "hi Comment guifg=#42464e"
-
-cmd "hi SignColumn guibg=NONE"
-cmd "hi VertSplit guibg=NONE guifg=#2a2e36"
-cmd "hi EndOfBuffer guifg=#1e222a"
-cmd "hi PmenuSel guibg=#98c379"
-cmd "hi Pmenu  guibg=#282c34"
-
-cmd "hi Normal guibg=NONE ctermbg=NONE"
-
--- inactive statuslines as thin splitlines
-cmd("highlight! StatusLineNC gui=underline guibg=NONE guifg=#383c44")
-
--- cmd "hi clear CursorLine"
--- cmd "hi cursorlinenr guibg=NONE guifg=#abb2bf"
