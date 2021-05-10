@@ -37,7 +37,6 @@ return require('packer').startup(function(use)
     use 'terrortylor/nvim-comment'
     use "907th/vim-auto-save"
     use 'kevinhwang91/nvim-bqf'
-    use "sbdchd/neoformat"
     use "norcalli/nvim-colorizer.lua"
     use "Yggdroot/indentLine"
     use "alvan/vim-closetag"                        -- CloseTag exm. <html>
