@@ -3,37 +3,16 @@
 ### Neovim 0.5+ / Luajit / luarocks
 
 ```language-bash
-brew install --HEAD neovim
-# or
-brew upgrade neovim --fetch-HEAD
-
-brew install --HEAD luajit
+brew install lua
+brew install luajit
+brew install ripgrep
+brew install ctags
+brew install neovim
 ```
 
-### luarock for telescope
-
-```language-bash
-luarocks install telescope
-```
 
 ### Iterm Font
-    - You have to use NERD or Powerline Fonts  [for icon problems]
-
-
-### Edit
-
-- You have to edit nvim/lua/configs/lspconfig/init.lua
-
-```
-    python = {
-        pythonPath = "<pyPath>",
-        venvPath = "<venvPath>"
-    },
-```
-
-### Golang Packages and PATH Settings
-
-- https://gist.github.com/keremvatandas/f447787a1bbd60b9a04f927ebc0e315b
+    - You are using agave Nerd Font
 
 
 ### NeoVim Conf
@@ -54,12 +33,7 @@ ln -s ~/dotfiles/nvim/ ~/.config/
 ln -s dotfiles/tmux/tmux.conf ~/.tmux.conf
 tmux source ~/.tmux.conf
 
-# Control a + I 
+# Control a + I
 ```
 
 
-### Preview Tmux and Nvim
-
-![alt text](https://raw.githubusercontent.com/keremvatandas/dotfiles/master/images/nvim0.png "Nvim Dashboard")
-
-![alt text](https://raw.githubusercontent.com/keremvatandas/dotfiles/master/images/nvim1.png "Nvim Dashboard")

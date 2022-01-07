@@ -1,26 +1,17 @@
--- load all plugins
-require("plugins")
-require("configs.file-icons")
-require("configs.bufferline")
-require("configs.statusline")
+-----------------------------------------------------------
+-- Import Lua modules
+-----------------------------------------------------------
 
-require("settings")                     -- Nvim Global Settings
-require("keymappings")                  -- All Shortcuts
-require("configs.treesitter")
-require("configs.telescope")
-require("configs.nvimTree")
-require("configs.gitsigns")
-require("configs.betterWhitespace")
-
-require('configs.lspkind')              -- symbols for autocomplete
-
-require("nvim-autopairs").setup()
-require("colorizer").setup()
-require('nvim_comment').setup()
-
-require("configs.lspconfig")            -- Lsp All Configs (Langs)
-
-
--- Which Key (Hope to replace with Lua plugin someday)
--- vim.cmd('source ~/.config/nvim/vimscript/lv-whichkey/init.vim')
--- vim.cmd('source ~/.config/nvim/vimscript/functions.vim')
+require('settings')
+require('mappings')
+require('plugins')
+require('plugins/bufferline')
+require('plugins/indent-blankline')
+require('plugins/lsp-installer')
+require('plugins/lspconfig')
+require('plugins/lsp-sign')
+require('plugins/lualine')
+require('plugins/nvim-tree')
+require('plugins/treesitter')
+require('plugins/nvim-cmp')
+require('plugins/telescope')
