@@ -67,7 +67,8 @@ set.smarttab = true       -- tab new lines
 -- Colorscheme
 -----------------------------------------------------------
 set.termguicolors = true      -- enable 24-bit RGB colors
-cmd [[colorscheme onedarkpro]]
+cmd [[colorscheme dracula]]
+cmd [[let &colorcolumn="80,".join(range(120,999),",")]]
 
 
 -----------------------------------------------------------
