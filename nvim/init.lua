@@ -2,9 +2,9 @@
 -- Import Lua modules
 -----------------------------------------------------------
 
+require('plugins')
 require('settings')
 require('mappings')
-require('plugins')
 require('plugins/bufferline')
 require('plugins/indent-blankline')
 require('plugins/lsp-installer')
