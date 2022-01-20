@@ -96,6 +96,7 @@ exec([[
 -- 2 spaces for selected filetypes (Basically to match prettier formatter indentation)
 cmd [[
   autocmd FileType xml,html,xhtml,css,scss,javascript,yaml,typescript,javascriptreact,typescriptreact setlocal shiftwidth=2 tabstop=2
+  autocmd BufWritePre *.js Neoformat
 ]]
 
 -- disable nvim intro
