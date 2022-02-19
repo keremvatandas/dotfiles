@@ -206,15 +206,14 @@ return require('packer').startup(function(use)
         requires = {'nvim-lua/plenary.nvim'}
     }
 
+    -- Startify
+    use 'mhinz/vim-startify'
+
     -- FZF for nvim
     use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
 
     -- Markdown
-    use {
-        'iamcco/markdown-preview.nvim',
-        ft = 'markdown',
-        run = 'cd app && yarn install'
-    }
+    use {"ellisonleao/glow.nvim"}
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then
