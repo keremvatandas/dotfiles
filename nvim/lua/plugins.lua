@@ -67,7 +67,7 @@ return require('packer').startup(function(use)
 
     -- Surround everything
     use {
-        "blackCauldron7/surround.nvim",
+        "keremvatandas/surround.nvim",
         config = function ()
             require"surround".setup {
                 context_offset = 100,
@@ -156,6 +156,8 @@ return require('packer').startup(function(use)
         requires = {
             'kyazdani42/nvim-web-devicons', -- optional, for file icon
         },
+        config = function() require'nvim-tree'.setup {} end
+
     }
 
     -- Bufferline

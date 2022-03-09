@@ -16,7 +16,7 @@ g.nvim_tree_git_hl = 1
 g.nvim_tree_highlight_opened_files = 0
 g.nvim_tree_icon_padding = ' '
 g.nvim_tree_refresh_wait = 500
-g.nvim_tree_disable_window_picker = 1
+-- g.nvim_tree_disable_window_picker = 0
 
 
 g.nvim_tree_show_icons = {
