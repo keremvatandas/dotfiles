@@ -4,7 +4,7 @@
 
 -- PLugin: nvim-tree
 -- https://github.com/kyazdani42/nvim-tree.lua
-
+-- Visibility Toogle SHIFT + i  [config.ini, env etc]
 local g = vim.g
 local cmd = vim.cmd
 local tree_cb = require'nvim-tree.config'.nvim_tree_callback
