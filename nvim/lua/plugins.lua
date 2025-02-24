@@ -65,6 +65,12 @@ return require('packer').startup(function(use)
     -- Formatter
     use {"sbdchd/neoformat"}
 
+    -- Snippet Engine
+    use {
+        'L3MON4D3/LuaSnip',
+        requires = {"rafamadriz/friendly-snippets"},
+    }
+
     -- Surround everything
     use {
         "keremvatandas/surround.nvim",
@@ -85,6 +91,9 @@ return require('packer').startup(function(use)
             }
         end
     }
+
+    -- Github CoPilot
+    use {"github/copilot.vim"}
 
     -- Comments
     use {
@@ -128,11 +137,6 @@ return require('packer').startup(function(use)
         "ray-x/lsp_signature.nvim",
     }
 
-    -- Snippet Engine
-    use {
-        'L3MON4D3/LuaSnip',
-        requires = {"rafamadriz/friendly-snippets"},
-    }
 
     -- Nvim cmp for autocompletion
     use {

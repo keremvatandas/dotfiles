@@ -102,3 +102,4 @@ cmd [[
 -- disable nvim intro
 set.shortmess:append "sI"
 
+

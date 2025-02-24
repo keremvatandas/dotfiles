@@ -26,3 +26,8 @@ Network Trash Folder
 Temporary Items
 .apdisk
 packer_compiled.lua
+
+
+nvim/pack/*
+nvim/http_ca.crt
+tmux/.tmux.conf.swp
