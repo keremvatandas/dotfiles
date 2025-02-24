@@ -1,8 +1,12 @@
-# For Neovim
+# Development Environment Setup Guide
 
-### Neovim 0.5+ / Luajit / luarocks
+This repository contains my personal development environment configurations, primarily focused on Neovim and Tmux setup.
 
-```language-bash
+## Prerequisites
+
+### Required Tools
+
+```bash
 brew install lua
 brew install luajit
 brew install ripgrep
@@ -10,30 +14,54 @@ brew install ctags
 brew install neovim
 ```
 
+## Setup Instructions
 
-### Iterm Font
-    - You are using agave Nerd Font
+### Neovim Configuration
 
+1. Install Packer (Neovim Package Manager):
 
-### NeoVim Conf
+```bash
+git clone https://github.com/wbthomason/packer.nvim \
+    ~/.local/share/nvim/site/pack/packer/start/packer.nvim
+```
 
+2. Link Neovim configuration:
 
-```language-bash
-git clone https://github.com/wbthomason/packer.nvim\
- ~/.local/share/nvim/site/pack/packer/start/packer.nvim
-
+```bash
 ln -s ~/dotfiles/nvim/ ~/.config/
 ```
 
-### Tmux Conf
+### Tmux Configuration
 
-- You have to install Tmux Plugin Manager (https://github.com/tmux-plugins/tpm)
+1. Install [Tmux Plugin Manager (TPM)](https://github.com/tmux-plugins/tpm)
 
-```language-bash
+2. Link Tmux configuration:
+
+```bash
 ln -s dotfiles/tmux/tmux.conf ~/.tmux.conf
-tmux source ~/.tmux.conf
-
-# Control a + I
 ```
 
+3. Apply configuration:
 
+```bash
+tmux source ~/.tmux.conf
+```
+
+4. Install plugins: Press `Ctrl + a` followed by `I` inside tmux session
+
+## Terminal Setup
+
+### Font Configuration
+
+- Terminal is configured to use **Agave Nerd Font**
+- Make sure to install this font for proper icon rendering
+
+## Notes
+
+- Requires Neovim 0.5 or higher
+- Configurations are optimized for macOS but should work on most Unix-like systems
+- All configurations are symlinked from the dotfiles directory
+
+## License
+
+Feel free to use and modify these configurations as you see fit.
